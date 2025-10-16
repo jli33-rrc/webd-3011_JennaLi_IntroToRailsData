@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_15_153544) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_16_204534) do
   create_table "breeds", force: :cascade do |t|
     t.string "name"
     t.string "image_url"
@@ -29,9 +29,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_15_153544) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
   end
 
   add_foreign_key "favourites", "breeds"

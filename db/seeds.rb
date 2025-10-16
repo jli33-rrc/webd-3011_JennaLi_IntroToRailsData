@@ -67,7 +67,7 @@ puts "Creating users..."
 100.times do
   User.create!(
     name: Faker::Name.name,
-    email: Faker::Internet.unique.email
+    username: Faker::Internet.unique.username(specifier: 5..12).gsub(/[^a-zA-Z0-9_]/, "_")
   )
 end
 

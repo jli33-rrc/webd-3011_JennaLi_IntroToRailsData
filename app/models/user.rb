@@ -4,5 +4,5 @@ class User < ApplicationRecord
 
   # Validations
   validates :name, presence: true, length: { minimum: 2 }
-  validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :username, presence: true, uniqueness: true, length: { minimum: 3, maximum: 20 }, format: { with: /\A[a-zA-Z0-9_]+\z/, message: "only allows letters, numbers, and underscores" }
 end
