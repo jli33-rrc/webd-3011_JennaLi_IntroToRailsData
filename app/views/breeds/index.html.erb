@@ -1,21 +1,35 @@
-<h1>Dog Browser</h1>
-
-<table border="1" cellpadding="8">
-  <tr>
-    <th>Name</th>
-    <th>Image</th>
-  </tr>
-
-  <% @breeds.each do |breed| %>
-    <tr>
-      <td><%= link_to breed.name.titleize, breed_path(breed) %></td>
-      <td>
-        <% if breed.image_url.present? %>
-          <img src="<%= breed.image_url %>" alt="<%= breed.name %>" width="100">
-        <% else %>
-          No image
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="grid is-col-min-10">
+      <div>
+        <h1 class="title has-text-centered">🐾 Dog Breeds</h1>
+        <table class="table is-fullwidth is-hoverable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Image</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @breeds.each do |breed| %>
+              <tr>
+                <td>
+                  <%= link_to breed.name.titleize, breed_path(breed), class: "has-text-link" %>
+                </td>
+                <td>
+                  <% if breed.image_url.present? %>
+                    <figure class="image" style="height:200px; width:auto;">
+                      <img src="<%= breed.image_url %>" alt="<%= breed.name %>" style="height:200px; width:auto; object-fit:contain;">
+                    </figure>
+                  <% else %>
+                    <span class="has-text-grey-light">No image</span>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
