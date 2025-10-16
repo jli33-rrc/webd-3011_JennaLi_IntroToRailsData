@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_16_204534) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_16_230506) do
   create_table "breeds", force: :cascade do |t|
     t.string "name"
     t.string "image_url"
@@ -32,6 +32,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_16_204534) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username"
+    t.text "about_me"
   end
 
   add_foreign_key "favourites", "breeds"

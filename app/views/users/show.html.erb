@@ -1,5 +1,6 @@
 <h1><%= @user.name %></h1>
 <p><strong>Username:</strong> <%= @user.username %></p>
+<p><strong>About Me:</strong> <%= @user.about_me.presence || "No description provided." %></p>
 
 <h3>Favourite Breeds</h3>
 
