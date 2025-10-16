@@ -1,2 +1,21 @@
-<h1>Breeds#index</h1>
-<p>Find me in app/views/breeds/index.html.erb</p>
+<h1>Dog Browser</h1>
+
+<table border="1" cellpadding="8">
+  <tr>
+    <th>Name</th>
+    <th>Image</th>
+  </tr>
+
+  <% @breeds.each do |breed| %>
+    <tr>
+      <td><%= link_to breed.name.titleize, breed_path(breed) %></td>
+      <td>
+        <% if breed.image_url.present? %>
+          <img src="<%= breed.image_url %>" alt="<%= breed.name %>" width="100">
+        <% else %>
+          No image
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
