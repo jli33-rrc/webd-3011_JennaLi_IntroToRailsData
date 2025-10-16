@@ -1,2 +1,23 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><%= @user.name %></h1>
+<p><strong>Email:</strong> <%= @user.email %></p>
+
+<h3>Favourite Breeds</h3>
+
+<% if @user.breeds.any? %>
+  <ul>
+    <% @user.breeds.each do |breed| %>
+      <li>
+        <%= link_to breed.name.titleize, breed_path(breed) %>
+        <% if breed.image_url.present? %>
+          <img src="<%= breed.image_url %>" alt="<%= breed.name %>" width="100">
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No favourite breeds yet.</p>
+<% end %>
+
+<br>
+<%= link_to "Back to All Users", users_path %> |
+<%= link_to "Back to Breeds", breeds_path %>
