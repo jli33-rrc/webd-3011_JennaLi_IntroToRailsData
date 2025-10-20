@@ -1,15 +1,29 @@
-<h1>All Users</h1>
-
-<table border="1" cellpadding="8">
-  <tr>
-    <th>Name</th>
-    <th>Favourites Count</th>
-  </tr>
-
-  <% @users.each do |user| %>
-    <tr>
-      <td><%= link_to user.name, user_path(user) %></td>
-      <td><%= user.breeds.count %></td>
-    </tr>
-  <% end %>
-</table>
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="grid is-col-min-10">
+      <div>
+        <h1 class="title has-text-centered">👤 Users</h1>
+        <table class="table is-fullwidth is-hoverable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Favourite Dog Breed Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td>
+                  <%= link_to user.name.titleize, user_path(user), class: "has-text-link" %>
+                </td>
+                <td>
+                  <%= user.breeds.count %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
