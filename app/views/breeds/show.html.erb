@@ -1,14 +1,38 @@
-<h1><%= @breed.name.titleize %></h1>
-
-<% if @breed.image_url.present? %>
-  <img src="<%= @breed.image_url %>" alt="<%= @breed.name %>" width="300">
-<% end %>
-
-<h3>Favourited by:</h3>
-<ul>
-  <% @breed.users.each do |user| %>
-    <li><%= user.name %></li>
-  <% end %>
-</ul>
-
-<%= link_to "Back to all breeds", breeds_path %>
+<section class="section">
+  <div class="container is-max-desktop">
+    <h1 class="title is-1"><%= @breed.name.titleize %></h1>
+    <% if @breed.image_url.present? %>
+      <figure class="image is-inline-block" style="max-height: 300px;">
+        <img src="<%= @breed.image_url %>" alt="<%= @breed.name %>" style="max-height: 300px; width: auto; object-fit: contain;">
+      </figure>
+    <% else %>
+      <p class="has-text-grey-light">No image available</p>
+    <% end %>
+    <div class="box mt-6">
+      <h2 class="title is-4">💖 Favourited by:</h3>
+      <% if @breed.users.any? %>
+        <table class="table is-fullwidth is-hoverable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @breed.users.each do |user| %>
+              <tr>
+                <td><%= user.name.titleize %></td>
+                <td class="has-text-right"><%= link_to "View Profile", user_path(user), class: "button is-small is-link is-light" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p class="has-text-grey-light">No users have favourited this breed yet.</p>
+      <% end %>
+    </div>
+    <div class="has-text-left mt-6">
+      <%= link_to "Back to Dog Breeds", breeds_path, class: "button is-link" %>
+    </div>
+  </div>
+</section>
