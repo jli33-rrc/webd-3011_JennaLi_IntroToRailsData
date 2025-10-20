@@ -10,6 +10,7 @@
     <% end %>
     <div class="box mt-6">
       <h2 class="title is-4">💖 Favourited by:</h3>
+      <p class="mb-4"><strong>Total Users: <%= @breed.users.count %></strong></p>
       <% if @breed.users.any? %>
         <table class="table is-fullwidth is-hoverable">
           <thead>
