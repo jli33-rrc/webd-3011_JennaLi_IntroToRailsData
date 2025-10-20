@@ -1,46 +1,60 @@
 <section class="section">
   <div class="container is-max-desktop">
-    <h1 class="title is-1"><%= @user.name.titleize %></h1>
-    <div class="content">
-      <p><strong>Username:</strong> <%= @user.username %></p>
-      <p><strong>About Me:</strong> <%= @user.about_me.presence || "No description provided." %></p>
-    </div>
-    <div class="box mt-6">
-      <h2 class="title is-4">💖 Favourite Dog Breeds</h2>
-      <p class="mb-4"><strong>Total Favourite Dog Breeds: <%= @user.breeds.count %></strong></p>
-      <% if @user.breeds.any? %>
-        <table class="table is-fullwidth is-hoverable">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Image</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @user.breeds.each do |breed| %>
-              <tr>
-                <td><%= breed.name.titleize %></td>
-                <td>
-                  <% if breed.image_url.present? %>
-                    <figure class="image is-64x64">
-                      <img src="<%= breed.image_url %>" alt="<%= breed.name %>" style="height:64px; width:auto; object-fit:contain;">
-                    </figure>
-                  <% else %>
-                    <span class="has-text-grey-light">No image</span>
+    <div class="fixed-grid has-1-cols">
+      <div class="grid">
+        <div class="cell">
+          <h1 class="title is-1 mb-4"><%= @user.name.titleize %></h1>
+        </div>
+        <div class="cell">
+          <div class="content">
+            <p><strong>Username:</strong> <%= @user.username %></p>
+            <p><strong>About Me:</strong> <%= @user.about_me.presence || "No description provided." %></p>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="box mt-6">
+            <h2 class="title is-4">💖 Favourite Dog Breeds</h2>
+            <p class="mb-4"><strong>Total Favourite Dog Breeds: <%= @user.breeds.count %></strong></p>
+            <% if @user.breeds.any? %>
+              <table class="table is-fullwidth is-hoverable">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @user.breeds.each do |breed| %>
+                    <tr>
+                      <td><%= breed.name.titleize %></td>
+                      <td>
+                        <% if breed.image_url.present? %>
+                          <figure class="image is-64x64">
+                            <img src="<%= breed.image_url %>" alt="<%= breed.name %>" style="height:64px; width:auto; object-fit:contain;">
+                          </figure>
+                        <% else %>
+                          <span class="has-text-grey-light">No image</span>
+                        <% end %>
+                      </td>
+                      <td class="has-text-right">
+                        <%= link_to "View Dog Breed", breed_path(breed), class: "button is-small is-link is-light" %>
+                      </td>
+                    </tr>
                   <% end %>
-                </td>
-                <td class="has-text-right"><%= link_to "View Dog Breed", breed_path(breed), class: "button is-small is-link is-light" %></td>
-              </tr>
+                </tbody>
+              </table>
+            <% else %>
+              <p class="has-text-grey-light">No favourite breeds yet.</p>
             <% end %>
-          </tbody>
-        </table>
-      <% else %>
-        <p class="has-text-grey-light">No favourite breeds yet.</p>
-      <% end %>
-    </div>
-    <div class="has-text-left mt-6">
-      <%= link_to "Back to Users", users_path, class: "button is-link" %>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="has-text-left mt-6">
+            <%= link_to "Back to Users", users_path, class: "button is-link" %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

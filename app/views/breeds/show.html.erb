@@ -1,39 +1,53 @@
 <section class="section">
   <div class="container is-max-desktop">
-    <h1 class="title is-1"><%= @breed.name.titleize %></h1>
-    <% if @breed.image_url.present? %>
-      <figure class="image is-inline-block" style="max-height: 300px;">
-        <img src="<%= @breed.image_url %>" alt="<%= @breed.name %>" style="max-height: 300px; width: auto; object-fit: contain;">
-      </figure>
-    <% else %>
-      <p class="has-text-grey-light">No image available</p>
-    <% end %>
-    <div class="box mt-6">
-      <h2 class="title is-4">💖 Favourited by:</h3>
-      <p class="mb-4"><strong>Total Users: <%= @breed.users.count %></strong></p>
-      <% if @breed.users.any? %>
-        <table class="table is-fullwidth is-hoverable">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @breed.users.each do |user| %>
-              <tr>
-                <td><%= user.name.titleize %></td>
-                <td class="has-text-right"><%= link_to "View Profile", user_path(user), class: "button is-small is-link is-light" %></td>
-              </tr>
+    <div class="fixed-grid has-1-cols">
+      <div class="grid">
+        <div class="cell">
+          <h1 class="title is-1 mb-4"><%= @breed.name.titleize %></h1>
+        </div>
+        <div class="cell">
+          <% if @breed.image_url.present? %>
+            <figure class="image" style="max-height: 300px;">
+              <img src="<%= @breed.image_url %>" alt="<%= @breed.name %>" style="max-height: 300px; width: auto; object-fit: contain;">
+            </figure>
+          <% else %>
+            <p class="has-text-grey-light">No image available</p>
+          <% end %>
+        </div>
+        <div class="cell">
+          <div class="box mt-6">
+            <h2 class="title is-4">💖 Favourited by:</h2>
+            <p class="mb-4"><strong>Total Users: <%= @breed.users.count %></strong></p>
+            <% if @breed.users.any? %>
+              <table class="table is-fullwidth is-hoverable">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @breed.users.each do |user| %>
+                    <tr>
+                      <td><%= user.name.titleize %></td>
+                      <td class="has-text-right">
+                        <%= link_to "View Profile", user_path(user), class: "button is-small is-link is-light" %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            <% else %>
+              <p class="has-text-grey-light">No users have favourited this breed yet.</p>
             <% end %>
-          </tbody>
-        </table>
-      <% else %>
-        <p class="has-text-grey-light">No users have favourited this breed yet.</p>
-      <% end %>
-    </div>
-    <div class="has-text-left mt-6">
-      <%= link_to "Back to Dog Breeds", breeds_path, class: "button is-link" %>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="has-text-left mt-6">
+            <%= link_to "Back to Dog Breeds", breeds_path, class: "button is-link" %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

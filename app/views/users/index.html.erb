@@ -1,28 +1,32 @@
 <section class="section">
   <div class="container is-max-desktop">
-    <div class="grid is-col-min-10">
-      <div>
-        <h1 class="title has-text-centered">👤 Users</h1>
-        <table class="table is-fullwidth is-hoverable">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Favourite Dog Breed Count</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @users.each do |user| %>
+    <div class="fixed-grid has-1-cols">
+      <div class="grid">
+        <div class="cell">
+          <h1 class="title is-1 mb-6">Users</h1>
+        </div>
+        <div class="cell">
+          <table class="table is-fullwidth is-hoverable">
+            <thead>
               <tr>
-                <td>
-                  <%= link_to user.name.titleize, user_path(user), class: "has-text-link" %>
-                </td>
-                <td>
-                  <%= user.breeds.count %>
-                </td>
+                <th>Name</th>
+                <th>Favourite Dog Breed Count</th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <% @users.each do |user| %>
+                <tr>
+                  <td>
+                    <%= link_to user.name.titleize, user_path(user), class: "has-text-link" %>
+                  </td>
+                  <td>
+                    <%= user.breeds.count %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
