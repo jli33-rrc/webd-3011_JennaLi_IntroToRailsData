@@ -1,2 +1,26 @@
-<h1>Pages#about</h1>
-<p>Find me in app/views/pages/about.html.erb</p>
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="fixed-grid has-1-cols">
+      <div class="grid">
+        <div class="cell">
+          <h1 class="title is-1 mb-4">About</h1>
+        </div>
+        <div class="cell">
+          <p>For this project, I am using two different data sources: the <strong>Dog CEO API</strong> and the <strong>Faker gem</strong>. The Dog CEO API is a public data source that provides information about dog breeds and their images. The main endpoint used, <strong>https://dog.ceo/api/breeds/list/all</strong>, returns a list of all dog breeds and their sub-breeds in JSON format. An additional endpoint, <strong>https://dog.ceo/api/breed/{breed}/images/random</strong>, is used to retrieve a random image for each breed. The data from these endpoints is structured as key-value pairs, where the keys represent breed names and the values represent any sub-breeds. This data will be stored in a <strong>breeds</strong> table, which includes columns for the breed's name and image_url.</p>
+        </div>
+        <div class="cell">
+          <p>The second data source is the <strong>Faker gem</strong>, which generates fake user information to simulate user accounts in the application. The columns in the <strong>users</strong> table are name, username, and about_me. Each user in the database can have one or more favourite dog breeds. To represent this relationship, a join table called <strong>favourites</strong> connects users and breeds. The favourites table includes foreign keys that reference both the users and breeds tables.</p>
+        </div>
+        <div class="cell">
+          <p>Together, these data sources create a relational structure where users can mark multiple breeds as their favourites, and each breed can be favourited by multiple users. This design establishes both one-to-many relationships (between users and favourites, and between breeds and favourites) and a many-to-many relationship (between users and breeds through favourites).</p>
+        </div>
+        <div class="cell">
+          <figure class="image mt-4">
+            <img src="<%= asset_path('webd-3011_JennaLi_IntroToRailsData_ERD.png') %>" alt="ERD diagram of Dog Browser" class="about-image">
+            <figcaption class="has-text-grey is-italic mt-2">An ERD diagram of Dog Browser.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
