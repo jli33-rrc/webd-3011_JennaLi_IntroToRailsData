@@ -1,7 +1,6 @@
 <nav class="navbar is-dark mb-5" aria-label="main navigation">
   <div class="navbar-brand">
     <%= link_to "🐶 Dog Browser", root_path, class: "navbar-item has-text-weight-bold" %>
-
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -9,12 +8,25 @@
       <span aria-hidden="true"></span>
     </a>
   </div>
-
   <div id="navbarMenu" class="navbar-menu">
     <div class="navbar-start">
       <%= link_to "About", about_path, class: "navbar-item" %>
-      <%= link_to "Breeds", breeds_path, class: "navbar-item" %>
+      <%= link_to "Dog Breeds", breeds_path, class: "navbar-item" %>
       <%= link_to "Users", users_path, class: "navbar-item" %>
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <%= form_with url: breeds_path, method: :get, local: true do %>
+          <div class="field has-addons">
+            <div class="control">
+              <%= text_field_tag :search, params[:search], placeholder: "Search dog breeds", class: "input" %>
+            </div>
+            <div class="control">
+              <%= submit_tag "Search", class: "button is-link is-light" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </nav>

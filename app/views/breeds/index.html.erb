@@ -6,6 +6,17 @@
           <h1 class="title is-1 mb-6">Dog Breeds</h1>
         </div>
         <div class="cell">
+          <% if params[:search].present? %>
+            <h2 class="title is-4 mb-4">
+              Your search results for "<span class="has-text-warning"><%= params[:search] %></span>" found
+              <span class="has-text-primary"><%= @breeds.total_count %> dog breeds</span>.
+            </h2>
+            <% if @breeds.empty? %>
+              <p class="has-text-grey">No dog breeds matched your search.</p>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="cell">
           <table class="table is-fullwidth is-hoverable">
             <thead>
               <tr>
